@@ -1,0 +1,30 @@
+We have an email sending tool which is built on Mail server ABC. The tool allows you to send an email to a single person or a group based for a particular event. The task is to extend the email sending tool to schedule the emails for a later time.  
+ 
+You are to complete 3 parts to achieve this task: 
+1.  A POST endpoint ‘/save_emails’ with these POST parameter  
+-     event_id: id of the event. Integer type data. E.g: 1, 2, 12, 24  
+-     email_subject: subject of the email. String data type. E.g: “Email Subject”.  
+-     email_content : body of the email. String data type. E.g: “Email Body”. Extra points if this is able to handle unicode strings 
+-	timestamp: date and time of which the email should be the same. String data type. To be stored as a timestamp object in the database that you are using. E.g: “15 Dec 2015 23:12” 
+ 
+The endpoint should allow the user to save the type of email he/she wants to send later. You are to use a database to store the data. Database that could be used are SQLite, MySQL, MariaDB, DynamoDB, Redis, MongoDB. Extra points will be given if an ORM is used to manage the database operations. 
+ 
+2. Design the necessary system to achieve the sending of emails when the time is hit. This will require you to come up with either a pull-based or push-based system. A pull-based would be active in the background constantly checking if the time is hit. A push-based system would only be active when it is the correct time.  
+ 
+This function / stand-alone script will be executed to send the emails via the ABC’s magical API: 
+ 
+ABC.messages.send(message=message, to=to, from=from, async=True) 
+ 
+You can set the from email as an arbitrary email address. The to email(s) can be obtained 
+from your database by querying the user table by event_id. 
+ 
+3. Design the necessary system to accommodate task 1 and 2 
+The design is to be contained in a single WSGI app using the framework of your choice (Flask, Bottle, CherryPy, Pylons or Pyramids).  
+
+Important Notes: 
+-  The project must be done completely in Python. 
+-  The project must be done in a software revision environment (Github, Bitbucket) of your choice Code considerations: 
+-  Usage and constructions of REST APIs 
+-  Knowledge of the MVC model 
+-  Code quality and maintainability 
+-  Familiarity of source control 
