@@ -11,8 +11,8 @@ from EmailSchedulingServer import app
 def home():
     """Renders the home page."""
     return render_template(
-        'index.html',
-        title='Home Page',
+        'email_scheduler.html',
+        title='Email Scheduler',
         year=datetime.now().year,
     )
 

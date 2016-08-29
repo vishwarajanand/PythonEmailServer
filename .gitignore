@@ -245,3 +245,8 @@ ModelManifest.xml
 .fake/
 *.gitattributes
 /EmailSchedulingServer/EmailSchedulingServer/env
+/EmailSchedulingServer/EmailSchedulingServer/database_layer/entity/__pycache__
+/EmailSchedulingServer/EmailSchedulingServer/database_layer/operations/__pycache__
+/EmailSchedulingServer/EmailSchedulingServer/database_layer/setup/__pycache__
+/EmailSchedulingServer/EmailSchedulingServer/database_layer/__pycache__
+/EmailSchedulingServer/EmailSchedulingServer/__pycache__

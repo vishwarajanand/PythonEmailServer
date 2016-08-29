@@ -30,19 +30,37 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="database_layer\entity\__init__.py" />
+    <Compile Include="database_layer\operations\__init__.py" />
+    <Compile Include="database_layer\setup\__init__.py" />
+    <Compile Include="database_layer\__init__.py" />
+    <Compile Include="database_layer\setup\datastore.py" />
+    <Compile Include="database_layer\entity\email.py" />
+    <Compile Include="database_layer\operations\datastore_operations.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="database_layer\setup\initialize_datastore.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="EmailSchedulingServer\__init__.py" />
     <Compile Include="EmailSchedulingServer\views.py" />
+    <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="database_layer\entity\" />
+    <Folder Include="database_layer\setup\" />
+    <Folder Include="database_layer\operations\" />
     <Folder Include="EmailSchedulingServer\" />
     <Folder Include="EmailSchedulingServer\static\" />
     <Folder Include="EmailSchedulingServer\static\content\" />
     <Folder Include="EmailSchedulingServer\static\fonts\" />
     <Folder Include="EmailSchedulingServer\static\scripts\" />
     <Folder Include="EmailSchedulingServer\templates\" />
+    <Folder Include="database_layer\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EmailSchedulingServer\templates\email_scheduler.html" />
     <Content Include="requirements.txt" />
     <Content Include="EmailSchedulingServer\static\content\bootstrap.css" />
     <Content Include="EmailSchedulingServer\static\content\bootstrap.min.css" />
