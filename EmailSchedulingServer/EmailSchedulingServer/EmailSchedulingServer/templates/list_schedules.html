@@ -1,10 +1,15 @@
+{% macro gen_list_item(item) %}
+<li>{{ item }}</li>
+{% endmacro %}
+
 {% extends "layout.html" %}
 
 {% block content %}
 
 <h2>{{ title }}</h2>
-<h3>{{ message }}</h3>
 
 <p>Following is the list of all schedules:</p>
+
+{% for email in message %}<li>{{ gen_list_item(email) }}</li>{% endfor %}
 
 {% endblock %}

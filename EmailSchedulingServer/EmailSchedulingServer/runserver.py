@@ -8,7 +8,6 @@ from database_layer.setup.initialize_datastore import initialize_datastore
 import uuid
 
 if __name__ == '__main__':
-    '''
     print("Initializing application datastore.")
     datastore_initializer = initialize_datastore(str(uuid.uuid4()))
     print("Finished initialization of application datastore.")
@@ -16,7 +15,7 @@ if __name__ == '__main__':
     print("Inserting dummy data.")
     datastore_initializer.initialize()
     print("Finished insertion of dummy data.")
-    '''
+    
     print("Starting server.")
     HOST = environ.get('SERVER_HOST', 'localhost')
     try:

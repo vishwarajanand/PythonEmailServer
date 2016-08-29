@@ -16,9 +16,9 @@ class datastore:
         return cls.__instance
 
     def __init__(self, db_name):
-        self.__db_name = db_name
         # Setup tables if datastore if not done
         if not self.__initialized:
+            self.__db_name = db_name
             print("Creating tables in datastore for supporting data operations.")
             self.__create_datastore()
             print("Finished creating tables in datastore.")

@@ -69,23 +69,27 @@ class datastore_operations:
             print("Exception occurred while deleting entity from datastore: " + str(ex))
             return str(ex)
     
-    # Searches and retrieves entities from Datastore.
-    def search(self, email):
+    # Retrieves entities from Datastore.
+    def retrieve_all(self):
         try:
             print("Connecting to DB.")
             dbConnection = sqlite3.connect(self.__db_name)
             dbLink = dbConnection.cursor()
             print("DB connection link established.")
-            tableQuery = """SELECT schedule_id , event_id , email_subject , email_content , schedule_date FROM scheduled_emails 
-                            WHERE schedule_id=""" + email.schedule_id
+            tableQuery = """SELECT schedule_id , event_id , email_subject , email_content , schedule_date FROM scheduled_emails"""
             print("Trying to search entity.")
             rows_affected = dbLink.execute(tableQuery)
             print("Entity retrieval finished.")
-            result = dbLink.fetchone()
-            fetched_email = email(result[0], result[1], result[2], result[3], result[4]);
+            result_rows = dbLink.fetchall()
+
+            print("Parsing retrieved data.")
+            fetched_emails = []
+            for result_row in result_rows:
+                fetched_emails.append(email(result_row[0], result_row[1], result_row[2], result_row[3], result_row[4]).stringify())
+            print("Finished parsing data.")
             dbConnection.commit()
             dbConnection.close()
-            return fetched_email
+            return fetched_emails
         except Exception as ex:
             print("Exception occurred while retrieving entity from datastore: " + str(ex))
             return str(ex)
