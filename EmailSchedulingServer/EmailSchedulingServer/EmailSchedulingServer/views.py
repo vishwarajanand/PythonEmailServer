@@ -11,19 +11,29 @@ from EmailSchedulingServer import app
 def home():
     """Renders the home page."""
     return render_template(
-        'email_scheduler.html',
+        'index.html',
         title='Email Scheduler',
         year=datetime.now().year,
     )
 
-@app.route('/contact')
-def contact():
-    """Renders the contact page."""
+@app.route('/save_email')
+def save_email():
+    """Renders the save new schedule page."""
     return render_template(
-        'contact.html',
-        title='Contact',
+        'save_email.html',
+        title='Save New Schedule',
         year=datetime.now().year,
-        message='Your contact page.'
+        message='Save New Schedule'
+    )
+
+@app.route('/list_schedules')
+def list_schedules():
+    """Renders the schedule list page."""
+    return render_template(
+        'list_schedules.html',
+        title='Saved Schedules',
+        year=datetime.now().year,
+        message='List of all saved schedules'
     )
 
 @app.route('/about')
@@ -33,5 +43,5 @@ def about():
         'about.html',
         title='About',
         year=datetime.now().year,
-        message='Your application description page.'
+        message='This application allows users to schedule emails to be pushed at a later date.'
     )
