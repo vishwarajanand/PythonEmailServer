@@ -10,6 +10,6 @@
 
 <p>Following is the list of all schedules:</p>
 
-{% for email in message %}<li>{{ gen_list_item(email) }}</li>{% endfor %}
+{% for email in message %}{{ gen_list_item(email) }}{% endfor %}
 
 {% endblock %}

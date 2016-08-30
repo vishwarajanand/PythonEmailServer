@@ -16,13 +16,26 @@ def home():
         title='Email Scheduler',
         year=datetime.now().year,)
 
-@app.route('/save_email')
-def save_email():
+@app.route('/new_schedule')
+def new_schedule():
     """Renders the save new schedule page."""
-    return render_template('save_email.html',
+    return render_template('new_schedule.html',
         title='Save New Schedule',
         year=datetime.now().year,
         message='Save New Schedule')
+
+@app.route('/save_emails', methods=['POST'])
+def save_emails():
+    """Saves scheduled email to datastore."""
+    try:
+        print("Fetching data from UI.")
+        new_email = email(request.form["event_id"],request.form["email_subject"],request.form["email_content"], str(request.form["schedule_date"]))
+        print("Email data obtained, saving in datastore.")
+        datastore_operations("").insert(new_email)
+        print("Email data saved in datastore, redirecting user to show list of saved emails.")
+        return list_schedules()
+    except Exception as ex:
+        print("Exception occurred while saving email schedule to datastore: " + str(ex))
 
 @app.route('/list_schedules')
 def list_schedules():

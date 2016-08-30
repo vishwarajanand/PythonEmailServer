@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<p>Create new schedule:</p>
+
+<form action="{{ url_for('save_emails') }}" method=POST>
+    <dl>
+        <dt>
+            Event Id:
+        <dd>
+            <input type="number" size=30 name=event_id>
+        <dt>
+            Scheduled Date:
+        <dd>
+            <input type="datetime-local" name="schedule_date">
+        <dt>
+            Email Subject:
+        <dd>
+            <textarea name="email_subject" rows=2 cols=100></textarea>
+        <dt>
+            Email Content:
+        <dd>
+            <textarea name="email_content" rows=5 cols=100></textarea>
+        <dt>
+        <dd>
+            <input type=submit value=Submit>
+    </dl>
+</form>
+
+{% endblock %}

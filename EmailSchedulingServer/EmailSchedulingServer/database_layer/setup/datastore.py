@@ -31,7 +31,7 @@ class datastore:
             DbLink = DbConnection.cursor()
             print("DB connection link established.")
             createTableQuery = """CREATE TABLE scheduled_emails
-                                   (schedule_id INTEGER PRIMARY KEY, event_id INTEGER, email_subject TEXT, email_content TEXT, schedule_date TEXT) 
+                                   (schedule_id INTEGER PRIMARY KEY AUTOINCREMENT, event_id INTEGER, email_subject TEXT, email_content TEXT, schedule_date TEXT) 
                                 """
             print("Trying to create tables.")
             DbLink.execute(createTableQuery)

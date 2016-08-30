@@ -18,8 +18,8 @@ class datastore_operations:
             dbConnection = sqlite3.connect(self.__db_name)
             dbLink = dbConnection.cursor()
             print("DB connection link established.")
-            tableQuery = """INSERT INTO scheduled_emails (schedule_id , event_id , email_subject , email_content , schedule_date) VALUES 
-                            (""" + str(email.schedule_id) + "," + str(email.event_id) + ",'" + email.email_subject + "','" + email.email_content + "','" + email.schedule_date + """') 
+            tableQuery = """INSERT INTO scheduled_emails (event_id , email_subject , email_content , schedule_date) VALUES 
+                            (""" + str(email.event_id) + ",'" + email.email_subject + "','" + email.email_content + "','" + email.schedule_date + """') 
                          """
             print("Trying to insert entity.")
             rows_affected = dbLink.execute(tableQuery)
@@ -76,7 +76,7 @@ class datastore_operations:
             dbConnection = sqlite3.connect(self.__db_name)
             dbLink = dbConnection.cursor()
             print("DB connection link established.")
-            tableQuery = """SELECT schedule_id , event_id , email_subject , email_content , schedule_date FROM scheduled_emails"""
+            tableQuery = """SELECT event_id , email_subject , email_content , schedule_date , schedule_id FROM scheduled_emails"""
             print("Trying to search entity.")
             rows_affected = dbLink.execute(tableQuery)
             print("Entity retrieval finished.")

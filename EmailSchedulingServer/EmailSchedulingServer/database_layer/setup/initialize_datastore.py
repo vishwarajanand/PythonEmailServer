@@ -11,7 +11,7 @@ class initialize_datastore:
 
     def initialize(self):
         print("Creating dummy entity")
-        firstEmail = email(1,2,"3txt","4txt","5txt")
+        firstEmail = email(0,"dummy_email_subject","dummy_email_content", "0001-01-01T00:00")
         print("Adding dummy entity")
         output = self.__datalayer.insert(firstEmail)
         print("Finished adding dummy entity : " + str(output))
