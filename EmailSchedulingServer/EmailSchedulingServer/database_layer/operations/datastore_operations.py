@@ -39,8 +39,8 @@ class datastore_operations:
             dbLink = dbConnection.cursor()
             print("DB connection link established.")
             tableQuery = """UPDATE FROM scheduled_emails 
-                            SET event_id=""" + email.event_id + ", email_subject='" + email.email_subject + "',email_content='" + email.email_content + "', schedule_date='" + email.schedule_date + """'
-                            WHERE schedule_id=""" + email.schedule_id
+                            SET event_id=""" + str(email.event_id) + ", email_subject='" + email.email_subject + "',email_content='" + email.email_content + "', schedule_date='" + email.schedule_date + """'
+                            WHERE schedule_id=""" + str(email.schedule_id)
             print("Trying to update entity.")
             rows_affected = dbLink.execute(tableQuery)
             print("Entity updation finished.")
@@ -58,7 +58,7 @@ class datastore_operations:
             dbConnection = sqlite3.connect(self.__db_name)
             dbLink = dbConnection.cursor()
             print("DB connection link established.")
-            tableQuery = """DELETE FROM scheduled_emails WHERE schedule_id=""" + email.schedule_id
+            tableQuery = """DELETE FROM scheduled_emails WHERE schedule_id=""" + str(email.schedule_id)
             print("Trying to delete entity.")
             rows_affected = dbLink.execute(tableQuery)
             print("Entity deletion finished.")
@@ -77,15 +77,14 @@ class datastore_operations:
             dbLink = dbConnection.cursor()
             print("DB connection link established.")
             tableQuery = """SELECT event_id , email_subject , email_content , schedule_date , schedule_id FROM scheduled_emails"""
+
             print("Trying to search entity.")
             rows_affected = dbLink.execute(tableQuery)
             print("Entity retrieval finished.")
             result_rows = dbLink.fetchall()
 
             print("Parsing retrieved data.")
-            fetched_emails = []
-            for result_row in result_rows:
-                fetched_emails.append(email(result_row[0], result_row[1], result_row[2], result_row[3], result_row[4]).stringify())
+            fetched_emails = [email(result_row[0], result_row[1], result_row[2], result_row[3], result_row[4]) for result_row in result_rows]
             print("Finished parsing data.")
             dbConnection.commit()
             dbConnection.close()

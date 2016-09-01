@@ -3,7 +3,7 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template
+from flask import request, render_template
 from EmailSchedulingServer import app
 from database_layer.operations.datastore_operations import datastore_operations
 from database_layer.entity.email import email
@@ -40,12 +40,14 @@ def save_emails():
 @app.route('/list_schedules')
 def list_schedules():
     """Fetch all saved emails"""
-    all_saved_emails = datastore_operations("").retrieve_all()
+    saved_emails_list = datastore_operations("").retrieve_all()
+    stringified_emails = [saved_email.stringify() for saved_email in saved_emails_list]
+    
     """Renders the schedule list page."""
     return render_template('list_schedules.html',
         title='Saved Schedules',
         year=datetime.now().year,
-        message=all_saved_emails)
+        message=stringified_emails)
 
 @app.route('/about')
 def about():

@@ -42,6 +42,9 @@
     <Compile Include="database_layer\setup\initialize_datastore.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="email_sender\email_publisher.py" />
+    <Compile Include="email_sender\pull_job_scheduler.py" />
+    <Compile Include="email_sender\__init__.py" />
     <Compile Include="runserver.py" />
     <Compile Include="EmailSchedulingServer\__init__.py" />
     <Compile Include="EmailSchedulingServer\views.py" />
@@ -58,6 +61,7 @@
     <Folder Include="EmailSchedulingServer\static\scripts\" />
     <Folder Include="EmailSchedulingServer\templates\" />
     <Folder Include="database_layer\" />
+    <Folder Include="email_sender\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EmailSchedulingServer\templates\list_schedules.html" />

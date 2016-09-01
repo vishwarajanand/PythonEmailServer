@@ -16,7 +16,10 @@
         <dt>
             Scheduled Date:
         <dd>
-            <input type="datetime-local" name="schedule_date">
+            <input type="datetime-local" name="schedule_date" id="schedule_date">
+            <script>
+                document.getElementById("schedule_date").value = new Date().toISOString().substring(0, 16);
+            </script>
         <dt>
             Email Subject:
         <dd>
@@ -30,5 +33,4 @@
             <input type=submit value=Submit>
     </dl>
 </form>
-
 {% endblock %}

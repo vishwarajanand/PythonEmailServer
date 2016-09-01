@@ -252,3 +252,4 @@ ModelManifest.xml
 /EmailSchedulingServer/EmailSchedulingServer/__pycache__
 /EmailSchedulingServer/EmailSchedulingServer/EmailSchedulingServer/__pycache__
 /EmailSchedulingServer/EmailSchedulingServer/web.debug.config
+/EmailSchedulingServer/EmailSchedulingServer/email_sender/__pycache__
